@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using XGame.Entity;
-using XGame.Models;
 
 namespace XGame.DataContext
 {
@@ -12,6 +11,6 @@ namespace XGame.DataContext
         }
 
         public DbSet<UserEntity> Users { get; set; }
-
+        public DbSet<NewsletterEntity> Newsletter { get; set; }
     }
 }
