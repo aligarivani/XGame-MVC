@@ -1,0 +1,330 @@
+﻿
+@{
+	ViewData["Title"] = "صفحه اصلی";
+}
+<div class="main-banner">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 align-self-center">
+				<div class="caption header-text" dir="rtl">
+					<h6>به فروشگاه XGame خوش آمدید</h6>
+					<h2>بهترین بازی ها برای شما</h2>
+					<p>جدید ترین بازی های روز با بهترین قیمت برای شما عزیزان با پشتیبانی قوی و ضمانت اورجینال بودن تمامی محصولات برای گیمیر های عزیز سایت </p>
+					<div class="search-input">
+						<form id="search" action="#" dir="ltr">
+							<input type="text" placeholder="به چی نیاز داری ؟" id='searchText' name="searchKeyword" onkeypress="handle" />
+							<button role="button">جستجو</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 offset-lg-2">
+				<div class="right-image">
+					<img src="/assets/images/banner-image.jpg" alt="">
+					<span class="price">$22</span>
+					<span class="offer">-40%</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <a href="#">
+                    <div class="item">
+                        <div class="image">
+                            <img src="assets/images/featured-01.png" alt="" style="max-width: 44px;">
+                        </div>
+                        <h4>بخش دانلود </h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <a href="#">
+                    <div class="item">
+                        <div class="image">
+                            <img src="assets/images/featured-02.png" alt="" style="max-width: 44px;">
+                        </div>
+                        <h4>مدیریت حساب </h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <a href="#">
+                    <div class="item">
+                        <div class="image">
+                            <img src="assets/images/featured-03.png" alt="" style="max-width: 44px;">
+                        </div>
+                        <h4>ویدیو بازی</h4>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <a asp-controller="Home" asp-action="Shop">
+                    <div class="item">
+                        <div class="image">
+                            <img src="assets/images/featured-04.png" alt="" style="max-width: 44px;">
+                        </div>
+                        <h4>محصولات</h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section trending">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-heading">
+                    <h6>ترند</h6>
+                    <h2>محصولات پر بازدید</h2>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="main-button">
+                    <a href="shop.html">دیدن همه</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="item">
+                    <div class="thumb">
+                        <a href="product-details.html"><img src="assets/images/trending-01.jpg" alt=""></a>
+                        <span class="price"><em>$28</em>$20</span>
+                    </div>
+                    <div class="down-content">
+                        <span class="category">Action</span>
+                        <h4>Assasin Creed</h4>
+                        <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="item">
+                    <div class="thumb">
+                        <a href="product-details.html"><img src="assets/images/trending-02.jpg" alt=""></a>
+                        <span class="price">$44</span>
+                    </div>
+                    <div class="down-content">
+                        <span class="category">Action</span>
+                        <h4>Assasin Creed</h4>
+                        <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="item">
+                    <div class="thumb">
+                        <a href="product-details.html"><img src="assets/images/trending-03.jpg" alt=""></a>
+                        <span class="price"><em>$64</em>$44</span>
+                    </div>
+                    <div class="down-content">
+                        <span class="category">Action</span>
+                        <h4>Assasin Creed</h4>
+                        <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="item">
+                    <div class="thumb">
+                        <a href="product-details.html"><img src="assets/images/trending-04.jpg" alt=""></a>
+                        <span class="price">$32</span>
+                    </div>
+                    <div class="down-content">
+                        <span class="category">Action</span>
+                        <h4>Assasin Creed</h4>
+                        <a href="product-details.html"><i class="fa fa-shopping-bag"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section most-played">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-heading">
+                    <h6>بهترین</h6>
+                    <h2>محبوب ترین محصولات</h2>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="main-button">
+                    <a href="shop.html">دیدن همه</a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-6">
+                <div class="item">
+                    <div class="thumb">
+                        <a href="product-details.html"><img src="assets/images/top-game-01.jpg" alt=""></a>
+                    </div>
+                    <div class="down-content">
+                        <span class="category">Adventure</span>
+                        <h4>Assasin Creed</h4>
+                        <a href="product-details.html">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-6">
+                <div class="item">
+                    <div class="thumb">
+                        <a href="product-details.html"><img src="assets/images/top-game-02.jpg" alt=""></a>
+                    </div>
+                    <div class="down-content">
+                        <span class="category">Adventure</span>
+                        <h4>Assasin Creed</h4>
+                        <a href="product-details.html">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-6">
+                <div class="item">
+                    <div class="thumb">
+                        <a href="product-details.html"><img src="assets/images/top-game-03.jpg" alt=""></a>
+                    </div>
+                    <div class="down-content">
+                        <span class="category">Adventure</span>
+                        <h4>Assasin Creed</h4>
+                        <a href="product-details.html">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-6">
+                <div class="item">
+                    <div class="thumb">
+                        <a href="product-details.html"><img src="assets/images/top-game-04.jpg" alt=""></a>
+                    </div>
+                    <div class="down-content">
+                        <span class="category">Adventure</span>
+                        <h4>Assasin Creed</h4>
+                        <a href="product-details.html">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-6">
+                <div class="item">
+                    <div class="thumb">
+                        <a href="product-details.html"><img src="assets/images/top-game-05.jpg" alt=""></a>
+                    </div>
+                    <div class="down-content">
+                        <span class="category">Adventure</span>
+                        <h4>Assasin Creed</h4>
+                        <a href="product-details.html">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 col-sm-6">
+                <div class="item">
+                    <div class="thumb">
+                        <a href="product-details.html"><img src="assets/images/top-game-06.jpg" alt=""></a>
+                    </div>
+                    <div class="down-content">
+                        <span class="category">Adventure</span>
+                        <h4>Assasin Creed</h4>
+                        <a href="product-details.html">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section categories">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="section-heading">
+                    <h6>دسته بندی</h6>
+                    <h2>پر بازدید ترین دسته بندی ها </h2>
+                </div>
+            </div>
+            <div class="col-lg col-sm-6 col-xs-12">
+                <div class="item">
+                    <h4>اکشن</h4>
+                    <div class="thumb">
+                        <a href="product-details.html"><img src="assets/images/categories-01.jpg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg col-sm-6 col-xs-12">
+                <div class="item">
+                    <h4>تفننی</h4>
+                    <div class="thumb">
+                        <a href="product-details.html"><img src="assets/images/categories-05.jpg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg col-sm-6 col-xs-12">
+                <div class="item">
+                    <h4>ماجراجویی</h4>
+                    <div class="thumb">
+                        <a href="product-details.html"><img src="assets/images/categories-03.jpg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg col-sm-6 col-xs-12">
+                <div class="item">
+                    <h4>استراتژی</h4>
+                    <div class="thumb">
+                        <a href="product-details.html"><img src="assets/images/categories-04.jpg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg col-sm-6 col-xs-12">
+                <div class="item">
+                    <h4>فانتزی</h4>
+                    <div class="thumb">
+                        <a href="product-details.html"><img src="assets/images/categories-05.jpg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section cta" dir="rtl">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="shop">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="section-heading">
+                                <h6>فروشگاه شما</h6>
+                                <h2>آماده بشید برای <em>خرید</em>از بهترین فروشگاه</h2>
+                            </div>
+                            <p>مجموعه ای از بهترین بازی ها در فروشگاه ما برای شما عزیزان</p>
+                            <div class="main-button">
+                                <a asp-controller="Home" asp-action="Shop">رفتن به فروشگاه</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 offset-lg-2 align-self-end">
+                <div class="subscribe">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="section-heading">
+                                <h6>جدیدترین ها</h6>
+                                <h2>برای با خبرشدن از <em>جدید ترین ها</em> ایمیل ثبت کنید!</h2>
+                            </div>
+                            <div class="search-input">
+                                <form id="subscribe" action="#">
+                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your email...">
+                                    <button type="submit">ثبت ایمیل</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
