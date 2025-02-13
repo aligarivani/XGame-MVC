@@ -6,6 +6,12 @@ var builder = WebApplication.CreateBuilder ( args );
 
 // Add services to the container.
 builder.Services.AddControllersWithViews ();
+builder.Services.AddAuthorization ( option =>
+{
+    option.AddPolicy ( "Adminonly", policy => policy.RequireRole ( "Admin" ) );
+    option.AddPolicy ( "UserOnly", policy => policy.RequireRole ( "User" ) );
+
+} );
 builder.Services.AddAuthentication ( CookieAuthenticationDefaults.AuthenticationScheme ).AddCookie ( option =>
 {
     option.LoginPath = "/Auth/Login";
@@ -13,6 +19,7 @@ builder.Services.AddAuthentication ( CookieAuthenticationDefaults.Authentication
     option.AccessDeniedPath = "/";
     option.ExpireTimeSpan = TimeSpan.FromDays ( 7 );
     option.SlidingExpiration = true;
+
 } );
 builder.Services.AddDbContext<DataContext> ( option =>
 {

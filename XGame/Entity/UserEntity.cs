@@ -43,5 +43,6 @@ namespace XGame.Entity
         public string? Password { get; set; }
 
         public DateTime CreateAt { get; set; } = DateTime.UtcNow;
+        public bool IsAdmin { get; set; } = false;
     }
 }

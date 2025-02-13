@@ -12,5 +12,6 @@ namespace XGame.DataContext
 
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<NewsletterEntity> Newsletter { get; set; }
+        public DbSet<CategoryEntity> Categories { get; set; }
     }
 }

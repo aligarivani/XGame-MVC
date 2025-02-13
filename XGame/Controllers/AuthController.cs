@@ -37,11 +37,21 @@ namespace XGame.Controllers
                     var Climes = new List<Claim>
                     {
                         new Claim(ClaimTypes.Name,data.UserName),
-                        new Claim(ClaimTypes.Role,"User")
                     };
+
                     var identity = new ClaimsIdentity ( Climes, CookieAuthenticationDefaults.AuthenticationScheme );
+                    if (data.IsAdmin == true)
+                    {
+                        identity.AddClaim ( new Claim ( ClaimTypes.Role, "Admin" ) );
+                    }
+                    else
+                    {
+                        identity.AddClaim ( new Claim ( ClaimTypes.Role, "User" ) );
+
+                    }
                     var claimPerincipal = new ClaimsPrincipal ( identity );
                     await HttpContext.SignInAsync ( CookieAuthenticationDefaults.AuthenticationScheme, claimPerincipal, new AuthenticationProperties { IsPersistent = true, ExpiresUtc = DateTimeOffset.UtcNow.AddDays ( 7 ) } );
+
                     return RedirectToAction ( "Index", "Home" );
                 }
             }
