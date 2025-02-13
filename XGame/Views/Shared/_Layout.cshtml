@@ -75,6 +75,10 @@
                                         <li><a class="IgnoreCss" asp-controller="Auth" asp-action="Logout">خروج از حساب</a></li>
 			                            <li><a>مدیریت حساب</a></li>
 			                            <li><a>سبد خرید</a></li>
+                                        @if (User.IsInRole("Admin"))
+                                        {
+	                                        <li><a>مدیریت محصول</a></li>
+                                        }
                                         <li style="visibility: hidden"><a></a></li>
 		                            </ul>
 	                            </div>
