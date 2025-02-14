@@ -65,7 +65,10 @@
 						<td>
 							<form asp-controller="AdminPanel" asp-action="DelCategory" method="post">
 								<input type="hidden"  value="@item.ID" name="Id"/>
-								<button class="btn btn-primary" type="button">ویرایش</button>
+								<button class="btn btn-primary editButton" type="button"
+								        data-id="@item.ID" data-Title="@item.Title" data-TitleFarsi="@item.TitleFarsi" data-Description="@item.Description">
+									ویرایش
+								</button>
 								<button class="btn btn-danger" type="submit" >حذف</button>
 							</form>
 
@@ -78,13 +81,14 @@
 			</tbody>
 		</table>
 		<div class="container p-1" style="text-align: center">
-			<button class="btn btn-success popOpen">ثبت دسته بندی جدید</button>
+			<button class="popOpen btn btn-success">ثبت دسته بندی جدید</button>
 		</div>
 	</div>
 </div>
- @* popup *@
- <div id="popupOverlay" style="display: none;">
-	 <div id="popup">
+
+
+<div id="popupOverlay" style="display: none;">
+	<div id="popup">
 		 <form id="popupForm" asp-controller="AdminPanel" asp-action="ShowCategory" method="post" dir="rtl">
 			 @* فرم خود را اینجا ایجاد کنید *@
 			 <div style="text-align: center; font-size: larger;" class="p-2">
@@ -102,9 +106,11 @@
 				 
 					 <input placeholder="توضیحات" class="form-control" type="text" id="Description" name="Description" required />
 				 </div>
+				 <input type="hidden" name="Id"  id="IdHidden"/>
 			 </div>
 		 
 			 <div class="pt-3" style="text-align: center">
+				 
 				 <button type="submit" class="btn btn-success" id="signUp">ثبت</button>
 				 <button type="button" id="closePopup" class="btn btn-danger">بستن</button>
 
@@ -114,40 +120,64 @@
  </div>
 
  @section Scripts
- {
-	 <script>
-		 document.addEventListener('DOMContentLoaded', function () {
+		{
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const popupOverlay = document.getElementById('popupOverlay');
+			const popup = document.getElementById('popup');
+			const closePopup = document.getElementById('closePopup');
+			const popOpenButton = document.querySelector('.popOpen');
+			const editButtons = document.querySelectorAll('.editButton');
+			const categoryIdInput = document.getElementById('categoryId');
+			const emailInput = document.getElementById('emailInput');
 
-			 const popupOverlay = document.getElementById('popupOverlay');
-			 const popup = document.getElementById('popup');
-			 const closePopup = document.getElementById('closePopup');
-			 const signUpButton = document.getElementById('signUp');
-			 const popOpenButton = document.querySelector('.popOpen');
+			// Function to open the popup
+			function openPopup() {
+				popupOverlay.style.display = 'flex';
+			}
 
-			 // Function to open the popup
-			 function openPopup() {
-				 popupOverlay.style.display = 'flex';
-			 }
+			// Function to close the popup
+			function closePopupFunc() {
+				popupOverlay.style.display = 'none';
+			}
 
-			 // Function to close the popup
-			 function closePopupFunc() {
-				 popupOverlay.style.display = 'none';
-			 }
+			// Open popup with empty form for new submission
+			popOpenButton.addEventListener('click', function () {
+				Title.value = '';
+				TitleFarsi.value = '';
+				Description.value = '';
+				signUp.textContent = "ثبت";
+				openPopup();
+			});
 
-			 // Close the popup when the close button is clicked
-			 closePopup.addEventListener('click', closePopupFunc);
+			// Open popup with filled form for editing
+			editButtons.forEach(button => {
+				button.addEventListener('click', function () {
+					const Title1 = this.getAttribute('data-Title');
+					const TitleFarsi1 = this.getAttribute('data-TitleFarsi');
+					const Description1 = this.getAttribute('data-Description');
+					const Id1 = this.getAttribute('data-id');
 
-			 // Close the popup when clicking outside the popup content
-			 popupOverlay.addEventListener('click', function (event) {
-				 if (event.target === popupOverlay) {
-					 closePopupFunc();
-				 }
-			 });
+					signUp.textContent = "ویرایش";
+					Title.value = Title1;
+					TitleFarsi.value = TitleFarsi1;
+					Description.value = Description1;
+					IdHidden.value = Id1;
+					popupForm.setAttribute('action', '/AdminPanel/EditCategory');
+					popupForm.setAttribute('method', 'post');
+					openPopup();
+				});
+			});
 
-			 // Trigger the popup to open when the button with class 'popOpen' is clicked
-			 popOpenButton.addEventListener('click', openPopup);
+			// Close the popup when the close button is clicked
+			closePopup.addEventListener('click', closePopupFunc);
 
-			 // You can customize and expand these functions based on your specific requirements.
-		 });
-	 </script>
+			// Close the popup when clicking outside the popup content
+			popupOverlay.addEventListener('click', function (event) {
+				if (event.target === popupOverlay) {
+					closePopupFunc();
+				}
+			});
+		});
+	</script>
  }

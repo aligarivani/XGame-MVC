@@ -75,5 +75,35 @@ namespace XGame.Controllers
             }
             return View ();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> EditCategory (CategoryEntity category)
+        {
+            if (ModelState.IsValid && category.ID != null && category.Title != null)
+            {
+                var data = await _dataContext.Categories.FirstOrDefaultAsync ( x => x.ID == category.ID );
+                if (data != null)
+                {
+                    data.Title = category.Title;
+                    data.TitleFarsi = category.TitleFarsi;
+                    data.Description = category.Description;
+                    try
+                    {
+                        _dataContext.Categories.Update ( data );
+                        await _dataContext.SaveChangesAsync ();
+                        List<CategoryEntity> categories = await _dataContext.Categories.ToListAsync ();
+                        ViewBag.cate = categories;
+                        return View ( "ShowCategory", ViewBag.cate );
+
+                    }
+                    catch (DbUpdateException ex)
+                    {
+                        ModelState.AddModelError ( "", "Error Db Update" );
+                        return View ( "ShowCategory" );
+                    }
+                }
+            }
+            return RedirectToAction ( "Index", "Home" );
+        }
     }
 }
