@@ -53,42 +53,66 @@
 			</tr>
 			</thead>
 			<tbody>
-			
-			@foreach (var item in cate)
+			@if (cate != null)
 			{
-				<tr style="text-align: center;">
-					<th scope="row">@item.ID</th>
-					<td>@item.Title</td>
-					<td>@item.TitleFarsi</td>
-					<td>@item.Description</td>
-					<td>
-						<button class="btn btn-primary" type="button">ویرایش</button>
-						<button class="btn btn-danger" type="button" >حذف</button>
+				@foreach (var item in cate)
+				{
+					<tr style="text-align: center;">
+						<th scope="row">@item.ID</th>
+						<td>@item.Title</td>
+						<td>@item.TitleFarsi</td>
+						<td>@item.Description</td>
+						<td>
+							<form asp-controller="AdminPanel" asp-action="DelCategory" method="post">
+								<input type="hidden"  value="@item.ID" name="Id"/>
+								<button class="btn btn-primary" type="button">ویرایش</button>
+								<button class="btn btn-danger" type="submit" >حذف</button>
+							</form>
 
-					</td>
-				</tr>
+						</td>
+					</tr>
+				}
 			}
+			
 			
 			</tbody>
 		</table>
-		<div class="container" style="text-align: center">
+		<div class="container p-1" style="text-align: center">
 			<button class="btn btn-success popOpen">ثبت دسته بندی جدید</button>
 		</div>
 	</div>
 </div>
  @* popup *@
  <div id="popupOverlay" style="display: none;">
- <div id="popup">
-	 <form id="popupForm" asp-controller="AdminPanel" asp-action="ShowCategory" method="post">
-		 @* فرم خود را اینجا ایجاد کنید *@
-		 <label for="emailInput" >ایمیل:</label>
-		 <input type="email" id="emailInput" name="Email" required />
-            
-		 <button type="submit" class="btn btn-success" id="signUp">ثبت</button>
-		 <button type="button" id="closePopup" class="btn btn-danger">بستن</button>
-	 </form>
+	 <div id="popup">
+		 <form id="popupForm" asp-controller="AdminPanel" asp-action="ShowCategory" method="post" dir="rtl">
+			 @* فرم خود را اینجا ایجاد کنید *@
+			 <div style="text-align: center; font-size: larger;" class="p-2">
+				 <span class="text-success" >افزودن دسته جدید</span>
+			 </div>
+			 <div style="text-align: end;">
+				 <div class="p-1">
+					 <input placeholder="نام دسته بندی" class="form-control" type="text" id="Title" name="Title" required />
+				 </div>
+				 <div class="p-1">
+				 
+					 <input placeholder="نام دسته به فارسی" class="form-control" type="text" id="TitleFarsi" name="TitleFarsi" required />
+				 </div>
+				 <div class="p-1">
+				 
+					 <input placeholder="توضیحات" class="form-control" type="text" id="Description" name="Description" required />
+				 </div>
+			 </div>
+		 
+			 <div class="pt-3" style="text-align: center">
+				 <button type="submit" class="btn btn-success" id="signUp">ثبت</button>
+				 <button type="button" id="closePopup" class="btn btn-danger">بستن</button>
+
+			 </div>
+		 </form>
+	 </div>
  </div>
- </div>
+
  @section Scripts
  {
 	 <script>

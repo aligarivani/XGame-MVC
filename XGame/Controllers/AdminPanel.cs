@@ -38,6 +38,10 @@ namespace XGame.Controllers
                     await _dataContext.Categories.AddAsync ( data );
                     await _dataContext.SaveChangesAsync ();
 
+                    List<CategoryEntity> categories = await _dataContext.Categories.ToListAsync ();
+                    ViewBag.cate = categories;
+                    ViewBag.ShowFooter = false;
+                    return View ( "ShowCategory", ViewBag.cate );
                 }
                 catch (DbUpdateException ex)
                 {
@@ -46,6 +50,30 @@ namespace XGame.Controllers
                 }
             }
             return View ( "ShowCategory" );
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DelCategory (int Id)
+        {
+            var dada = await _dataContext.Categories.FirstOrDefaultAsync ( x => x.ID == Id );
+            if (dada.ID != null)
+            {
+                try
+                {
+                    _dataContext.Categories.Remove ( dada );
+                    await _dataContext.SaveChangesAsync ();
+                    List<CategoryEntity> categories = await _dataContext.Categories.ToListAsync ();
+                    ViewBag.cate = categories;
+                    return View ( "ShowCategory", ViewBag.cate );
+
+                }
+                catch (DbUpdateException ex)
+                {
+                    ModelState.AddModelError ( "", "Error DB Update" );
+                    return View ( "ShowCategory" );
+                }
+            }
+            return View ();
         }
     }
 }
